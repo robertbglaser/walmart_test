@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import InputArea from './InputArea';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+      <InputArea/>
         
       </div>
     );
