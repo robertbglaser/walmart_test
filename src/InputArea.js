@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Container, Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 class InputArea extends Component {
 
@@ -24,16 +24,16 @@ class InputArea extends Component {
     
   render() {
     return (
-      <div className="container">
+      <Container className="col-md-5">
         <Input type="url" name="imageUrl" onPaste={this.handleInputData} onChange={this.handleInputData} id="imageUrl" placeholder="Enter URL" />
-          <InputGroup>
-        <Input  type="text" name="title" onPaste={this.handleInputData} onChange={this.handleInputData} id="imageTitle" placeholder="Title" />
-        <InputGroupAddon addonType="append">
-        <Button color="primary" onClick={this.handleClick} size="sm">New Post</Button>
-        </InputGroupAddon>
-      </InputGroup>
+        <InputGroup>
+            <Input  type="text" name="title" onPaste={this.handleInputData} onChange={this.handleInputData} id="imageTitle" placeholder="Title" />
+            <InputGroupAddon addonType="append">
+            <Button color="primary" onClick={this.handleClick} size="sm">New Post</Button>
+            </InputGroupAddon>
+        </InputGroup>
         
-      </div>
+      </Container>
     )
   }
 }

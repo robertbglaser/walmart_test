@@ -11,15 +11,17 @@ class ImageCard extends Component {
     }
   render() {
     return (
+      
       <div>
+        
         <br/>
-<Card>
-       
-        <CardBody>
-          <CardTitle>{this.props.Title}</CardTitle>
-          <CardImg top width="100%" src={this.props.imageUrl} alt="Card image cap" />
-        </CardBody>
-      </Card>
+        <span className="col-lg-5"></span>
+          <Card  >
+            <CardBody border="dark" className="col-md-5">
+              <CardTitle>{this.props.Title}</CardTitle>
+              <CardImg top width="100%" src={this.props.imageUrl} alt="Card image cap" />
+            </CardBody>
+          </Card>
 
         
       </div>

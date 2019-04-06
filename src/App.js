@@ -4,6 +4,23 @@ import InputArea from './InputArea';
 import ImageCard from './ImageCard';
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      image:{
+        url:"",
+        title:""
+      }
+
+    }
+  }
+
+  componentDidMount(){
+
+  }
+
+
   render() {
     return (
       <div className="App">
