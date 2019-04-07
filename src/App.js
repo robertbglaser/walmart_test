@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import InputArea from './InputArea';
-import ImageCard from './ImageCard';
+
+//import InputArea from './InputArea';
+//import ImageCard from './ImageCard';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateUser } from "./actions/user-actions";
+
+ 
 
 class App extends Component {
 
@@ -12,30 +18,47 @@ class App extends Component {
         url:"",
         title:""
       }
-
     }
+    this.onUpdateUser = this.onUpdateUser.bind(this);
   }
 
-  componentDidMount(){
+  onUpdateUser(event) {
 
+      this.props.onUpdateUser(event.target.value)
   }
-
 
   render() {
+    
     return (
       <div className="App">
-      <InputArea/>
-      <ImageCard 
-      imageUrl={"https://res.cloudinary.com/twenty20/private_images/t_watermark-criss-cross-10/v1450248078000/photosp/e41c1f0f-2ed5-4f78-b92b-9900340b5d1a/stock-photo-river-travel-adventure-walking-foot-feet-boots-hike-going-e41c1f0f-2ed5-4f78-b92b-9900340b5d1a.jpg"}
-      Title='hiking Boots'
-       /> 
-       <ImageCard 
-      imageUrl={"https://thumbs.dreamstime.com/z/zip-line-26475548.jpg"}
-      Title='Zip Line'
-       /> 
+       <input onChange={this.onUpdateUser}/>
+       {this.props.user}  
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, props) => {
+
+  return {
+    products:state.products,
+    user: state.user,
+    userPlusProp: `${state.user} ${props.aRandomProps}`
+  } 
+};
+
+const mapActionsToProps = (dispatch, props) => {
+  console.log(props)
+  return bindActionCreators({
+    onUpdateUser: updateUser
+  }, dispatch)
+   
+}
+
+const mergeProps = (propsFromState, propsFromDispatch, ownProps ) => {
+  
+  console.log(propsFromState, propsFromDispatch, ownProps)
+  return {};
+}
+
+export default connect(mapStateToProps, mapActionsToProps) (App);
